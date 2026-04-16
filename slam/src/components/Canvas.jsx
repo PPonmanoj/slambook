@@ -4,6 +4,12 @@ import { SceneManager } from '../utils/sceneManager'
 import { DoorScene } from '../scenes/DoorScene'
 import { ClassroomScene } from '../scenes/ClassroomScene'
 
+// Dynamic imports for loaders
+const GLTFLoader = async () => {
+  const module = await import('three/examples/jsm/loaders/GLTFLoader.js')
+  return module.GLTFLoader
+}
+
 export const Canvas = () => {
   const containerRef = useRef(null)
   const sceneRef = useRef(null)
