@@ -14,7 +14,7 @@ export const LoginPage = ({ onLoginSuccess }) => {
 
     try {
       // Call backend login endpoint
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('https://slambook-q47h.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

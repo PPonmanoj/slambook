@@ -83,7 +83,7 @@ export class ClassroomScene {
     try {
       const token = localStorage.getItem('token')
       
-      const response = await fetch('http://localhost:5000/api/messages/inbox', {
+      const response = await fetch('https://slambook-q47h.onrender.com/api/messages/inbox', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -351,7 +351,7 @@ export class ClassroomScene {
         submitBtn.textContent = '🔄 Saving...'
 
         // Save as draft
-        const response = await fetch('http://localhost:5000/api/messages/draft', {
+        const response = await fetch('https://slambook-q47h.onrender.com/api/messages/draft', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -676,8 +676,8 @@ export class ClassroomScene {
   async loadReceivedMessages(messagesList) {
     try {
       const token = localStorage.getItem('token')
-      
-      const response = await fetch('http://localhost:5000/api/messages/inbox', {
+
+      const response = await fetch('https://slambook-q47h.onrender.com/api/messages/inbox', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -732,8 +732,8 @@ export class ClassroomScene {
   async markAllMessagesAsRead() {
     try {
       const token = localStorage.getItem('token')
-      
-      const response = await fetch('http://localhost:5000/api/messages/mark-read', {
+
+      const response = await fetch('https://slambook-q47h.onrender.com/api/messages/mark-read', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -917,8 +917,8 @@ export class ClassroomScene {
   async loadDraftMessages(draftsList) {
     try {
       const token = localStorage.getItem('token')
-      
-      const response = await fetch('http://localhost:5000/api/messages/drafts', {
+
+      const response = await fetch('https://slambook-q47h.onrender.com/api/messages/drafts', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -994,8 +994,8 @@ export class ClassroomScene {
   async sendMessage(draftId) {
     try {
       const token = localStorage.getItem('token')
-      
-      const response = await fetch('http://localhost:5000/api/messages/send', {
+
+      const response = await fetch('https://slambook-q47h.onrender.com/api/messages/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1921,7 +1921,7 @@ openChangePasswordModal() {
       submitBtn.disabled = true
       submitBtn.textContent = '🔄 Updating...'
 
-      const response = await fetch('http://localhost:5000/api/auth/change-password', {
+      const response = await fetch('https://slambook-q47h.onrender.com/api/auth/change-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1972,7 +1972,7 @@ openChangePasswordModal() {
 
       console.log('📥 Starting PDF download...')
 
-      const response = await fetch('http://localhost:5000/api/messages/download-pdf', {
+      const response = await fetch('https://slambook-q47h.onrender.com/api/messages/download-pdf', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
