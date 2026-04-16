@@ -11,8 +11,22 @@ dotenv.config()
 
 const app = express()
 
-// Middleware
-app.use(cors())
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'https://lustrous-gnome-c2c5ae.netlify.app/'
+]
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}))
+
 app.use(express.json())
 
 // MongoDB Connection with better error handling
