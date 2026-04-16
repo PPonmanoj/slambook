@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+/* Responsive modal & UI overrides (works even if modals are created with inline styles) */
+#scrollModal,
+#giftBoxModal,
+#santaModal,
+#changePasswordModal,
+#classroomModal,
+#genericModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px; /* breathing room on small screens */
+  box-sizing: border-box;
+  backdrop-filter: blur(6px);
+}
+
+/* Target the inner modal container (the first child div inside the modal) */
+#scrollModal > div,
+#giftBoxModal > div,
+#santaModal > div,
+#changePasswordModal > div,
+#classroomModal > div,
+#genericModal > div {
+  width: 100% !important;
+  max-width: 640px !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  border-radius: 16px !important;
+  padding: 22px !important;
+  box-sizing: border-box !important;
+}
+
+/* Make form controls stretch on all modals */
+#scrollModal input,
+#scrollModal textarea,
+#giftBoxModal input,
+#giftBoxModal textarea,
+#santaModal input,
+#santaModal textarea,
+#changePasswordModal input,
+#changePasswordModal textarea,
+#classroomModal input,
+#classroomModal textarea,
+.modal-content input,
+.modal-content textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-size: 15px !important;
+  padding: 10px 12px !important;
+  border-radius: 10px !important;
+}
+
+/* Modal title and close button adjustments for small screens */
+#scrollModal h2,
+#giftBoxModal h2,
+#santaModal h2,
+#changePasswordModal h2 {
+  font-size: 20px !important;
+}
+
+/* Ensure lists inside modals scroll nicely */
+#giftBoxModal #receivedMessagesList,
+#santaModal #draftMessagesList {
+  max-height: 50vh !important;
+  overflow-y: auto !important;
+  padding-right: 8px;
+}
+
+/* Classroom UI buttons (top-right on desktop, bottom-center on mobile) */
+#classroom-ui {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 1500;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 180ms ease;
+  pointer-events: auto;
+}
+
+/* Buttons: consistent padding, large touch targets */
+#classroom-ui button {
+  min-height: 44px;
+  padding: 12px 18px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Make download/change-password/logout compact on small screens and place bottom-centered */
+@media (max-width: 600px) {
+  #classroom-ui {
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    bottom: 14px !important;
+    transform: translateX(-50%) !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 10px !important;
+    background: rgba(255,255,255,0.02);
+    border-radius: 999px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+
+  #classroom-ui button {
+    padding: 10px 12px;
+    font-size: 13px;
+    min-height: 44px;
+    border-radius: 10px;
+  }
+
+  /* Make modal inner content narrower on tiny screens */
+  #scrollModal > div,
+  #giftBoxModal > div,
+  #santaModal > div,
+  #changePasswordModal > div {
+    max-width: 420px !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Extra polish for very small phones */
+@media (max-width: 360px) {
+  #classroom-ui button { font-size: 12px; padding: 10px; }
+  #scrollModal h2, #giftBoxModal h2, #santaModal h2, #changePasswordModal h2 { font-size: 18px !important; }
+  #giftBoxModal #receivedMessagesList, #santaModal #draftMessagesList { max-height: 40vh !important; }
+}
+
+/* Improve scroll behavior for iOS */
+html, body {
+  -webkit-overflow-scrolling: touch;
+}
